@@ -3,6 +3,7 @@ module.exports = {
     extends: ['eslint:recommended', 'plugin:prettier/recommended'],
     parser: '@typescript-eslint/parser', // Specifies the ESLint parser
     env: {
+        node: true,
         browser: true,
         es6: true,
         jest: true
