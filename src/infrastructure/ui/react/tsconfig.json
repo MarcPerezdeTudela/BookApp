@@ -6,10 +6,12 @@
             "@/components/*": ["./src/components/*"],
             "@/assets/*": ["./src/assets/*"],
             "@/hooks/*": ["./src/hooks/*"],
-            "@/models": ["../../../domain/models/index.ts"],
-            "@/mocks/*": ["../../../mocks/*"],
-            "@/repositories/*": ["../../../infrastructure/repositories/*"],
-            "@/services/*": ["../../../domain/services/*"]
+            "@/pages/*": ["./src/pages/*"],
+            "@/store/*": ["./src/store/*"],
+            "@/context/*": ["./src/context/*"],
+            "@/domain/*": ["../../../domain/*"],
+            "@/infrastructure/*": ["../../../infrastructure/*"],
+            "@/mocks/*": ["../../../mocks/*"]
         },
         "useDefineForClassFields": true,
         "lib": ["ES2020", "DOM", "DOM.Iterable"],

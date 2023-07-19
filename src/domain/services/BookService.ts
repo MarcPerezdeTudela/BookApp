@@ -1,5 +1,5 @@
-import { IBookRepository } from '@/repositories/IBookRepository';
-import { Book } from '@/models';
+import { IBookRepository } from '@/domain/repositories/IBookRepository';
+import { Book } from '@/domain/models/Book';
 import Fuse from 'fuse.js';
 
 export class BookService {

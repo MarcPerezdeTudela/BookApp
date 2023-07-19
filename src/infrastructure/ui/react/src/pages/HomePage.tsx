@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useStore } from 'zustand';
-import { GlobalContext } from '../context/globalContext';
+import { GlobalContext } from '@/context/globalContext';
 import { SearchBar } from '@/components/SearchBar';
 import { BooksGrid } from '@/components/BooksGrid';
 

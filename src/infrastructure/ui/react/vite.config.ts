@@ -10,10 +10,12 @@ export default defineConfig({
             { find: '@/components', replacement: fileURLToPath(new URL('./src/components/', import.meta.url)) },
             { find: '@/assets', replacement: fileURLToPath(new URL('./src/assets/', import.meta.url)) },
             { find: '@/hooks', replacement: fileURLToPath(new URL('./src/hooks/', import.meta.url)) },
+            { find: '@/store', replacement: fileURLToPath(new URL('./src/store/', import.meta.url)) },
+            { find: '@/context', replacement: fileURLToPath(new URL('./src/context/', import.meta.url)) },
+            { find: '@/pages', replacement: fileURLToPath(new URL('./src/pages/', import.meta.url)) },
             { find: '@/domain', replacement: fileURLToPath(new URL('../../../domain/', import.meta.url)) },
-            { find: '@/mocks', replacement: fileURLToPath(new URL('../../../mocks/', import.meta.url)) },
-            { find: '@/repositories', replacement: fileURLToPath(new URL('../../../infrastructure/repositories/', import.meta.url)) },
-            { find: '@/services', replacement: fileURLToPath(new URL('../../../domain/services/', import.meta.url)) }
+            { find: '@/infrastructure', replacement: fileURLToPath(new URL('../../../infrastructure/', import.meta.url)) },
+            { find: '@/mocks', replacement: fileURLToPath(new URL('../../../mocks/', import.meta.url)) }
         ]
     }
 });

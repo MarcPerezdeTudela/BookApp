@@ -1,6 +1,6 @@
 import { createStore } from 'zustand';
-import { BookService } from '@/services/BookService';
-import { BookRepository } from '@/repositories/BookRepository';
+import { BookService } from '@/domain/services/BookService';
+import { BookRepository } from '@/infrastructure/repositories/BookRepository';
 
 export interface GlobalStoreProps {
     bookService: BookService;
