@@ -1,6 +1,6 @@
 import { IBookRepository } from '@/domain/repositories/IBookRepository';
 import { Book } from '@/domain/models/Book';
-import Fuse from 'fuse.js';
+import { SearchParams } from '@/domain/models/SearchParams';
 
 export class BookService {
     private bookRepository: IBookRepository;
@@ -10,11 +10,15 @@ export class BookService {
     getBooks() {
         return this.bookRepository.getBooks();
     }
-    filterByTitle(books: Book[], title: string) {
-        const options = {
-            keys: ['title']
-        };
-        const fuse = new Fuse(books, options);
-        return fuse.search(title);
+    filterByTitle(book: Book, title: string) {
+        if (!title) return book;
+        return book.title.toLowerCase().includes(title.toLowerCase());
+    }
+    filterByGenre(book: Book, genres: string[]) {
+        if (!genres.length) return book;
+        return genres.some(genre => book.genre.includes(genre));
+    }
+    filterBooks(books: Book[], searchParams: SearchParams) {
+        return books.filter(book => this.filterByTitle(book, searchParams.title) && this.filterByGenre(book, searchParams.genres));
     }
 }
