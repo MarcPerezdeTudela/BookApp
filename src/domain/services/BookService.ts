@@ -19,6 +19,7 @@ export class BookService {
         return genres.some(genre => book.genre.includes(genre));
     }
     filterByMaxPages(book: Book, maxPages: number) {
+        if (maxPages === 0) return book;
         return book.pages <= maxPages;
     }
     filterBooks(books: Book[], searchParams: SearchParams) {

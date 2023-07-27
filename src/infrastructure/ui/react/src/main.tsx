@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-import { createBrowserRouter, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { GlobalContext } from '@/context/globalContext';
 import { createGlobalStore } from '@/store/globalStore';
 import { share } from 'shared-zustand';
@@ -13,17 +13,6 @@ import { MainLayout } from './layouts/MainLayout.tsx';
 const store = createGlobalStore();
 share('booksToRead', store);
 share('avaibleBooks', store);
-
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <HomePage />
-    },
-    {
-        path: '/reading-list',
-        element: <ReadingListPage />
-    }
-]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

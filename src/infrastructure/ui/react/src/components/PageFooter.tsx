@@ -6,9 +6,9 @@ export const PageFooter = () => {
             <div>
                 <img src={Logo} alt='Logo' className='logo w-12' />
                 <p>
-                    ACME Industries Ltd.
+                    Book App
                     <br />
-                    Providing reliable tech since 1992
+                    Tu mejor opción para encontrar tu próximo libro
                 </p>
             </div>
             <div>
