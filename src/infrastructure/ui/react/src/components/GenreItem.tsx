@@ -1,5 +1,5 @@
+import { useState, useRef } from 'react';
 import { useGlobalContext } from '@/hooks/useGlobalContext';
-import { ChangeEvent } from 'react';
 
 type Props = {
     genre: string;
@@ -8,29 +8,27 @@ type Props = {
 export const GenreItem = ({ genre }: Props) => {
     const searchParams = useGlobalContext(store => store.searchParams);
     const setSearchParams = useGlobalContext(store => store.setSearchParams);
+    const [active, setActive] = useState(false);
+    const button = useRef<HTMLButtonElement>(null);
 
-    const handleOnCheckOption = (e: ChangeEvent<HTMLInputElement>) => {
-        const { value, checked } = e.target;
-        if (checked) {
-            setSearchParams({ ...searchParams, genres: [...searchParams.genres, value] });
-        } else if (!checked) {
-            const selectedGenres = searchParams.genres.filter(genre => genre !== value);
+    const handleOnClick = () => {
+        if (active) {
+            const selectedGenres = searchParams.genres.filter(item => item !== genre);
             setSearchParams({ ...searchParams, genres: selectedGenres });
+            setActive(false);
+            button.current?.classList.remove('btn-success');
+            button.current?.classList.add('btn-outline');
+        } else if (!active) {
+            setSearchParams({ ...searchParams, genres: [...searchParams.genres, genre] });
+            setActive(true);
+            button.current?.classList.add('btn-success');
+            button.current?.classList.remove('btn-outline');
         }
     };
 
     return (
-        <div className='flex items-center mb-4'>
-            <input
-                id='default-checkbox'
-                type='checkbox'
-                value={genre}
-                className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
-                onChange={handleOnCheckOption}
-            />
-            <label htmlFor='default-checkbox' className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'>
-                {genre}
-            </label>
-        </div>
+        <button className='btn btn-outline' ref={button} onClick={handleOnClick}>
+            {genre}
+        </button>
     );
 };
