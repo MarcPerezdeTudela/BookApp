@@ -7,7 +7,7 @@ export class BookService {
     constructor(bookRepository: IBookRepository) {
         this.bookRepository = bookRepository;
     }
-    getBooks() {
+    getAllBooks() {
         return this.bookRepository.getBooks();
     }
     filterByTitle(book: Book, title: string) {
@@ -18,7 +18,17 @@ export class BookService {
         if (!genres.length) return book;
         return genres.some(genre => book.genre.includes(genre));
     }
+    filterByMaxPages(book: Book, maxPages: number) {
+        return book.pages <= maxPages;
+    }
     filterBooks(books: Book[], searchParams: SearchParams) {
-        return books.filter(book => this.filterByTitle(book, searchParams.title) && this.filterByGenre(book, searchParams.genres));
+        return books
+            .filter(
+                book =>
+                    this.filterByTitle(book, searchParams.title) &&
+                    this.filterByGenre(book, searchParams.genres) &&
+                    this.filterByMaxPages(book, searchParams.maxPages)
+            )
+            .sort((a, b) => a.title.localeCompare(b.title));
     }
 }

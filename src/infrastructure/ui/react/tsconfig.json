@@ -8,6 +8,8 @@
             "@/hooks/*": ["./src/hooks/*"],
             "@/pages/*": ["./src/pages/*"],
             "@/store/*": ["./src/store/*"],
+            "@/layouts/*": ["./src/layouts/*"],
+            "@/routes/*": ["./src/routes/*"],
             "@/context/*": ["./src/context/*"],
             "@/domain/*": ["../../../domain/*"],
             "@/infrastructure/*": ["../../../infrastructure/*"],
